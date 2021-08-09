@@ -1,17 +1,32 @@
 import './App.css';
 
-export function App(props) {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>{props.text}</h1>
-      </header>
-    </div>
-  );
-}
+import {useEffect, useState} from "react";
 
-export function Message(props) {
-  return (
-    <p className="Message">{props.message}</p>
-  );
-}
+export function App() {
+    const [messageList, setMessageList] = useState([]);
+    const [value, setValue] = useState("")
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (messageList.length !== 0 && messageList[messageList.length - 1].author === "User") {
+                setMessageList(state => [...state, {value: "message received!", author: "Bot"}]);
+            }
+        }, 1500);
+    }, [messageList]);
+
+    return (
+        <div className="App">
+            <ul className="message_list">
+                {messageList.map((message, quantity) => (<li key={quantity}><span>{message.author}</span>:{message.value}</li>))}
+            </ul>
+            <div className="input_form">
+                <input type="text" value={value} onChange={(event) => setValue(event.target.value)}/>
+                <button onClick={() => {
+                    setMessageList(state => [...state, {value, author: "User"}]);
+                    setValue("");
+                }}>Send
+                </button>
+            </div>
+        </div>
+    );
+} 

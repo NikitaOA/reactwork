@@ -1,7 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App-header {
   margin: 15% auto 0;
-  width: 50%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.App {
+  flex-direction: column;
+  width: 50%;
+  min-height: 480px;
+  margin: 0 auto;
+  justify-content: space-between;
+  background-color: black;
+  border-radius: 5px;
+}
+
+.App li {
+  list-style-type: none;
+  color: white;
+}
+
+.message_list {
+  font-family: cursive;
+}
+
+.App span {
+  color: white;
+}
+
+.input_form {
+  align-self: center;
+}
+.input_form input {
+  width: 280px;
+  height: 20px;
+}
+.input_form button {
+  width: 100px;
+  height: 24px;
+}
+.input_form button :hover {
+  background-color: darkgray;
 }
