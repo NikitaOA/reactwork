@@ -17,8 +17,8 @@ export function App() {
     return (
         <div className="App">
             <ul className="message_list">
-                {messageList.map(message => <li><span>{message.author}</span>: {message.value}</li>)}
-                </ul>
+                {messageList.map((message, quantity) => (<li key={quantity}><span>{message.author}</span>:{message.value}</li>))}
+            </ul>
             <div className="input_form">
                 <input type="text" value={value} onChange={(event) => setValue(event.target.value)}/>
                 <button onClick={() => {
